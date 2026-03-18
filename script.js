@@ -1,3 +1,35 @@
+let index = 0;
+const slides = document.getElementById("slides");
+const dots = document.querySelectorAll(".dots span");
+const totalSlides = 7;
+
+// AUTO SLIDE
+function showSlide(i) {
+  index = i;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+
+  dots.forEach(dot => dot.classList.remove("active-dot"));
+  dots[index].classList.add("active-dot");
+}
+
+function nextSlide() {
+  index = (index + 1) % totalSlides;
+  showSlide(index);
+}
+
+setInterval(nextSlide, 2000);
+
+// DOT CLICK
+function goToSlide(i) {
+  showSlide(i);
+}
+
+// INIT
+showSlide(0);
+
+
+/* EXISTING FUNCTIONS */
+
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   const icon = document.getElementById("menuIcon");
@@ -12,26 +44,37 @@ function toggleMenu() {
 }
 
 function showSection(id, el = null) {
-
-  // Show section
   document.querySelectorAll("section").forEach(sec => {
     sec.classList.remove("active");
   });
   document.getElementById(id).classList.add("active");
 
-  // ✅ Update active tab (desktop)
   document.querySelectorAll(".tab-bar button").forEach(btn => {
     btn.classList.remove("active-tab");
   });
 
-  if (el) {
-    el.classList.add("active-tab");
-  }
+  if (el) el.classList.add("active-tab");
 
-  // Close mobile menu
-  const menu = document.getElementById("mobileMenu");
-  const icon = document.getElementById("menuIcon");
-
-  menu.classList.remove("show");
-  icon.textContent = "☰";
+  document.getElementById("mobileMenu").classList.remove("show");
+  document.getElementById("menuIcon").textContent = "☰";
 }
+
+
+/* SWIPE SUPPORT (mobile) */
+
+let startX = 0;
+
+slides.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+slides.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) {
+    nextSlide();
+  } else if (endX - startX > 50) {
+    index = (index - 1 + totalSlides) % totalSlides;
+    showSlide(index);
+  }
+});
