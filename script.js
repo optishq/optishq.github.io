@@ -7,13 +7,13 @@ const total = 7;
 
 let autoSlide;
 
-/* PRELOAD IMAGES */
+/* PRELOAD IMAGES (fix blank flash) */
 document.querySelectorAll(".slide img").forEach(img => {
   const i = new Image();
   i.src = img.src;
 });
 
-/* UPDATE ACTIVE SLIDE */
+/* UPDATE ACTIVE (center effect) */
 function updateActiveSlide() {
   const allSlides = document.querySelectorAll(".slide");
 
@@ -28,15 +28,13 @@ function updateActiveSlide() {
 function moveSlide(animate = true) {
   const slideWidth = slides.children[0].offsetWidth;
 
-  if (!animate) slides.style.transition = "none";
+  if (!animate) {
+    slides.style.transition = "none";
+  } else {
+    slides.style.transition = "transform 0.5s ease-in-out";
+  }
 
   slides.style.transform = `translateX(-${index * slideWidth}px)`;
-
-  if (!animate) {
-    setTimeout(() => {
-      slides.style.transition = "transform 0.5s ease-in-out";
-    }, 50);
-  }
 
   updateActiveSlide();
 }
@@ -50,14 +48,21 @@ function updateDots() {
 /* NEXT */
 function nextSlide() {
   index++;
-  moveSlide();
+  moveSlide(true);
   updateDots();
 }
 
-/* CLICK DOT */
+/* PREV (for swipe) */
+function prevSlide() {
+  index--;
+  moveSlide(true);
+  updateDots();
+}
+
+/* DOT CLICK */
 function goToSlide(i) {
   index = i + 1;
-  moveSlide();
+  moveSlide(true);
   updateDots();
 }
 
@@ -76,16 +81,19 @@ slides.addEventListener("transitionend", () => {
 
 });
 
-/* AUTO SLIDE CONTROL */
+/* AUTO SLIDE */
 function startAuto() {
-  autoSlide = setInterval(nextSlide, 2000);
+  stopAuto(); // prevent duplicates
+  autoSlide = setInterval(() => {
+    nextSlide();
+  }, 2000);
 }
 
 function stopAuto() {
-  clearInterval(autoSlide);
+  if (autoSlide) clearInterval(autoSlide);
 }
 
-/* TOUCH SWIPE SUPPORT (MOBILE 🔥) */
+/* TOUCH SUPPORT (SAFE VERSION) */
 let startX = 0;
 
 slides.addEventListener("touchstart", (e) => {
@@ -99,9 +107,7 @@ slides.addEventListener("touchend", (e) => {
   if (startX - endX > 50) {
     nextSlide();
   } else if (endX - startX > 50) {
-    index--;
-    moveSlide();
-    updateDots();
+    prevSlide();
   }
 
   startAuto();
@@ -112,7 +118,7 @@ window.onload = () => {
   moveSlide(false);
   updateDots();
   updateActiveSlide();
-  startAuto();
+  startAuto();  // ✅ THIS was likely broken earlier
 };
 
 
