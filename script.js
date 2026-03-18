@@ -1,12 +1,13 @@
+/* CASSEROLE FUNCTIONS */
+
 let index = 0;
 const slides = document.getElementById("slides");
 const dots = document.querySelectorAll(".dots span");
 const totalSlides = 7;
 
-// AUTO SLIDE
 function showSlide(i) {
   index = i;
-  slides.style.transform = `translateX(-${index * 100}%)`;
+  slides.style.transform = `translateX(-${index * (100 / totalSlides)}%)`;
 
   dots.forEach(dot => dot.classList.remove("active-dot"));
   dots[index].classList.add("active-dot");
@@ -19,13 +20,14 @@ function nextSlide() {
 
 setInterval(nextSlide, 2000);
 
-// DOT CLICK
 function goToSlide(i) {
   showSlide(i);
 }
 
 // INIT
-showSlide(0);
+window.onload = () => {
+  showSlide(0);
+};
 
 
 /* EXISTING FUNCTIONS */
