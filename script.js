@@ -5,13 +5,14 @@ const slides = document.getElementById("slides");
 const dots = document.querySelectorAll(".dots span");
 const total = 7;
 
+/* IMPORTANT: shift to center */
+function moveSlide() {
+  slides.style.transform = `translateX(calc(-${index * 40}% + 30%))`;
+}
+
 function updateDots() {
   dots.forEach(dot => dot.classList.remove("active-dot"));
   dots[(index - 1 + total) % total].classList.add("active-dot");
-}
-
-function moveSlide() {
-  slides.style.transform = `translateX(-${index * 100}%)`;
 }
 
 function nextSlide() {
@@ -27,6 +28,7 @@ function goToSlide(i) {
 }
 
 slides.addEventListener("transitionend", () => {
+
   if (index === total + 1) {
     index = 1;
     slides.style.transition = "none";
@@ -44,7 +46,7 @@ slides.addEventListener("transitionend", () => {
   }, 50);
 });
 
-/* AUTO SLIDE */
+/* AUTO */
 setInterval(nextSlide, 2000);
 
 /* INIT */
