@@ -140,6 +140,15 @@ function showSection(id, el = null) {
   });
   document.getElementById(id).classList.add("active");
 
+  /* FIX CAROUSEL WHEN RETURNING TO HOME */
+  if (id === "home") {
+    setTimeout(() => {
+      moveSlide(false);
+      updateDots();
+      updateActiveSlide();
+    }, 100); // small delay ensures layout is ready
+  }
+
   document.querySelectorAll(".tab-bar button").forEach(btn => {
     btn.classList.remove("active-tab");
   });
