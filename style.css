@@ -3,44 +3,53 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* NAVBAR */
-nav {
+/* HEADER */
+.header {
+  background: black;
+  height: 20vh;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #0a2540;
-  color: white;
-  padding: 15px 20px;
+  justify-content: center;
+  position: relative;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-ul li a {
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
+  height: 60%;
 }
 
 /* HAMBURGER */
-.menu-toggle {
-  display: none;
-  font-size: 24px;
+.hamburger {
+  position: absolute;
+  right: 20px;
+  font-size: 28px;
+  color: white;
   cursor: pointer;
+  display: none;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: black;
+  text-align: center;
+}
+
+.mobile-menu a {
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  border-top: 1px solid #333;
+}
+
+.mobile-menu.show {
+  display: flex;
 }
 
 /* SECTIONS */
 section {
   display: none;
-  padding: 40px 20px;
+  padding: 30px;
   text-align: center;
 }
 
@@ -48,34 +57,29 @@ section {
   display: block;
 }
 
-/* BUTTON */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #00bcd4;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-}
-
-/* MOBILE */
+/* 📱 MOBILE VIEW */
 @media (max-width: 768px) {
-  ul {
-    display: none;
-    flex-direction: column;
-    background: #0a2540;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    padding: 10px;
+
+  .header {
+    height: 70px;
+    justify-content: flex-start;
+    padding-left: 15px;
   }
 
-  ul.show {
-    display: flex;
+  .logo {
+    height: 40px;
   }
 
-  .menu-toggle {
+  .hamburger {
     display: block;
   }
+}
+
+/* 💻 DESKTOP VIEW */
+@media (min-width: 769px) {
+
+  .mobile-menu {
+    display: none !important;
+  }
+
 }
