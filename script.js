@@ -7,7 +7,6 @@ const totalSlides = dots.length;
 
 function showSlide(i) {
   index = i;
-
   slides.style.transform = `translateX(-${index * 100}%)`;
 
   dots.forEach(dot => dot.classList.remove("active-dot"));
