@@ -243,15 +243,19 @@ section {
 }
 
 /* Default (side slides) */
+/* DEFAULT (side images) */
 .slide {
   transform: scale(0.85);
   opacity: 0.5;
+  filter: blur(2px);
+  transition: all 0.5s ease;
 }
 
-/* Active (center slide) */
+/* ACTIVE CENTER IMAGE */
 .slide.active-slide {
   transform: scale(1);
   opacity: 1;
+  filter: blur(0);
   z-index: 2;
 }
 
