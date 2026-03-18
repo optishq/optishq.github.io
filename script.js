@@ -1,14 +1,14 @@
 function toggleMenu() {
-  const menu = document.getElementById("mobileMenu");
-  menu.classList.toggle("show");
+  document.getElementById("mobileMenu").classList.toggle("show");
 }
 
-function showSection(sectionId) {
-  const sections = document.querySelectorAll("section");
-  sections.forEach(sec => sec.classList.remove("active"));
+function showSection(id) {
+  document.querySelectorAll("section").forEach(sec => {
+    sec.classList.remove("active");
+  });
 
-  document.getElementById(sectionId).classList.add("active");
+  document.getElementById(id).classList.add("active");
 
-  // Close menu after click (mobile)
+  // close mobile menu
   document.getElementById("mobileMenu").classList.remove("show");
 }
