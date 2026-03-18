@@ -1,31 +1,56 @@
 /* CASSEROLE FUNCTIONS */
 
-let index = 0;
+let index = 1;
 const slides = document.getElementById("slides");
 const dots = document.querySelectorAll(".dots span");
-const totalSlides = dots.length;
+const total = 7;
 
-function showSlide(i) {
-  index = i;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-
+function updateDots() {
   dots.forEach(dot => dot.classList.remove("active-dot"));
-  dots[index].classList.add("active-dot");
+  dots[(index - 1 + total) % total].classList.add("active-dot");
+}
+
+function moveSlide() {
+  slides.style.transform = `translateX(-${index * 100}%)`;
 }
 
 function nextSlide() {
-  index = (index + 1) % totalSlides;
-  showSlide(index);
+  index++;
+  moveSlide();
+  updateDots();
 }
-
-setInterval(nextSlide, 2000);
 
 function goToSlide(i) {
-  showSlide(i);
+  index = i + 1;
+  moveSlide();
+  updateDots();
 }
 
+slides.addEventListener("transitionend", () => {
+  if (index === total + 1) {
+    index = 1;
+    slides.style.transition = "none";
+    moveSlide();
+  }
+
+  if (index === 0) {
+    index = total;
+    slides.style.transition = "none";
+    moveSlide();
+  }
+
+  setTimeout(() => {
+    slides.style.transition = "transform 0.5s ease-in-out";
+  }, 50);
+});
+
+/* AUTO SLIDE */
+setInterval(nextSlide, 2000);
+
+/* INIT */
 window.onload = () => {
-  showSlide(0);
+  moveSlide();
+  updateDots();
 };
 
 
