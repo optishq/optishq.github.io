@@ -134,43 +134,69 @@ section {
   position: relative;
 }
 
-/* FIX: remove hardcoded 700% */
+/* SLIDES TRACK */
 .slides {
   display: flex;
+  align-items: center;
   transition: transform 0.5s ease-in-out;
 }
 
-/* FIX: each slide takes full screen width */
+/* EACH SLIDE */
 .slide {
-  min-width: 100%;
-  flex-shrink: 0;
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* FIX: show full image (no cropping) */
+/* IMAGE BASE */
 .slide img {
-  width: 100%;
-  height: auto;          /* ✅ keeps full image */
-  object-fit: contain;   /* ✅ no zoom/crop */
   display: block;
-  background: black;     /* optional: fills empty space nicely */
+  background: black;
 }
 
-/* DOTS */
-.dots {
-  text-align: center;
-  margin-top: 10px;
+/* ========================= */
+/* 💻 DESKTOP VIEW */
+/* ========================= */
+@media (min-width: 769px) {
+
+  .carousel {
+    height: 60vh;
+  }
+
+  .slide {
+    flex: 0 0 60%; /* 👈 smaller than 100% so side images show */
+  }
+
+  .slide img {
+    height: 100%;
+    width: auto; /* 👈 maintain aspect ratio */
+    object-fit: contain;
+  }
+
 }
 
-.dots span {
-  height: 10px;
-  width: 10px;
-  margin: 5px;
-  display: inline-block;
-  background: #bbb;
-  border-radius: 50%;
-  cursor: pointer;
-}
+/* ========================= */
+/* 📱 MOBILE VIEW */
+/* ========================= */
+@media (max-width: 768px) {
 
-.dots .active-dot {
-  background: #00bcd4;
+  .carousel {
+    height: auto;
+  }
+
+  .slides {
+    align-items: stretch;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
 }
