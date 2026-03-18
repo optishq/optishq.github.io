@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optishq - Eye Care & Eyewear</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optishq</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>Optishq</h1>
-    <p>Your Vision, Our Priority</p>
-    <a href="tel:+91XXXXXXXXXX" class="btn">Call Now</a>
-</header>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">Optishq</div>
 
-<section class="about">
-    <h2>About Us</h2>
-    <p>We are your trusted neighborhood eye care center offering professional eye checkups, stylish eyeglasses, and premium sunglasses.</p>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <ul id="nav-links">
+    <li><a onclick="showSection('home')">Home</a></li>
+    <li><a onclick="showSection('about')">About Us</a></li>
+    <li><a onclick="showSection('location')">Location</a></li>
+    <li><a onclick="showSection('appointments')">Appointments</a></li>
+    <li><a onclick="showSection('contact')">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- SECTIONS -->
+
+<section id="home" class="active">
+  <h1>Welcome to Optishq</h1>
+  <p>Your Vision, Our Priority</p>
 </section>
 
-<section class="services">
-    <h2>Our Services</h2>
-    <div class="card">
-        <h3>Eye Checkup</h3>
-        <p>Accurate and professional vision testing.</p>
-    </div>
-    <div class="card">
-        <h3>Eyeglasses</h3>
-        <p>Trendy and comfortable frames for everyday use.</p>
-    </div>
-    <div class="card">
-        <h3>Sunglasses</h3>
-        <p>Protect your eyes with style.</p>
-    </div>
+<section id="about">
+  <h2>About Us</h2>
+  <p>We provide professional eye checkups, stylish eyeglasses, and premium sunglasses.</p>
 </section>
 
-<section class="why">
-    <h2>Why Choose Us</h2>
-    <p>✔ Expert care<br>✔ Affordable pricing<br>✔ Latest designs<br>✔ Friendly service</p>
+<section id="location">
+  <h2>Our Location</h2>
+  <p>📍 Your Store Address</p>
+  <a href="#" class="btn">Open in Google Maps</a>
 </section>
 
-<section class="contact">
-    <h2>Visit Us</h2>
-    <p>📍 Your Store Address Here</p>
-    <p>📞 +91XXXXXXXXXX</p>
-    <a href="#" class="btn">Get Directions</a>
+<section id="appointments">
+  <h2>Appointments</h2>
+  <p>Online booking coming soon.</p>
 </section>
 
-<footer>
-    <p>© 2026 Optishq. All rights reserved.</p>
-</footer>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>📞 +91XXXXXXXXXX</p>
+  <a href="tel:+91XXXXXXXXXX" class="btn">Call Now</a>
+</section>
 
+<script src="script.js"></script>
 </body>
 </html>
