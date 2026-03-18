@@ -1,4 +1,4 @@
-/* CASSEROLE FUNCTIONS */
+/* CAROUSEL FUNCTIONS */
 
 let index = 1;
 const slides = document.getElementById("slides");
