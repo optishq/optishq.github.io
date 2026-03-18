@@ -8,23 +8,25 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <div class="logo">Optishq</div>
+<!-- HEADER -->
+<header class="header">
+  <img src="logo_optishq.jpg" class="logo" alt="Optishq Logo">
 
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+</header>
 
-  <ul id="nav-links">
-    <li><a onclick="showSection('home')">Home</a></li>
-    <li><a onclick="showSection('about')">About Us</a></li>
-    <li><a onclick="showSection('location')">Location</a></li>
-    <li><a onclick="showSection('appointments')">Appointments</a></li>
-    <li><a onclick="showSection('contact')">Contact Us</a></li>
-  </ul>
-</nav>
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('about')">About Us</a>
+  <a onclick="showSection('location')">Location</a>
+  <a onclick="showSection('appointments')">Appointments</a>
+  <a onclick="showSection('contact')">Contact Us</a>
+</div>
 
 <!-- SECTIONS -->
-
 <section id="home" class="active">
   <h1>Welcome to Optishq</h1>
   <p>Your Vision, Our Priority</p>
@@ -32,24 +34,22 @@
 
 <section id="about">
   <h2>About Us</h2>
-  <p>We provide professional eye checkups, stylish eyeglasses, and premium sunglasses.</p>
+  <p>Professional eye checkups, eyeglasses & sunglasses.</p>
 </section>
 
 <section id="location">
-  <h2>Our Location</h2>
+  <h2>Location</h2>
   <p>📍 Your Store Address</p>
-  <a href="#" class="btn">Open in Google Maps</a>
 </section>
 
 <section id="appointments">
   <h2>Appointments</h2>
-  <p>Online booking coming soon.</p>
+  <p>Booking feature coming soon.</p>
 </section>
 
 <section id="contact">
-  <h2>Contact Us</h2>
+  <h2>Contact</h2>
   <p>📞 +91XXXXXXXXXX</p>
-  <a href="tel:+91XXXXXXXXXX" class="btn">Call Now</a>
 </section>
 
 <script src="script.js"></script>
