@@ -11,19 +11,25 @@
 <!-- HEADER -->
 <header class="header">
   <img src="logo_optishq.jpg" class="logo" alt="Optishq Logo">
-
-  <div class="hamburger" onclick="toggleMenu()">
-    ☰
-  </div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
 
-<!-- MOBILE MENU -->
+<!-- DESKTOP TAB BAR -->
+<div class="tab-bar">
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('about')">About Us</button>
+  <button onclick="showSection('location')">Location</button>
+  <button onclick="showSection('appointments')">Appointments</button>
+  <button onclick="showSection('contact')">Contact</button>
+</div>
+
+<!-- MOBILE POPUP MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <a onclick="showSection('home')">Home</a>
   <a onclick="showSection('about')">About Us</a>
   <a onclick="showSection('location')">Location</a>
   <a onclick="showSection('appointments')">Appointments</a>
-  <a onclick="showSection('contact')">Contact Us</a>
+  <a onclick="showSection('contact')">Contact</a>
 </div>
 
 <!-- SECTIONS -->
