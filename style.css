@@ -6,15 +6,15 @@ body {
 /* HEADER */
 .header {
   background: black;
-  height: 20vh;
+  height: 25vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   position: relative;
 }
 
 .logo {
-  height: 60%;
+  height: 80%;
 }
 
 /* HAMBURGER */
@@ -27,19 +27,49 @@ body {
   display: none;
 }
 
-/* MOBILE MENU */
+/* DESKTOP TAB BAR */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  background: #111;
+}
+
+.tab-bar button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tab-bar button:hover {
+  background: #333;
+}
+
+/* MOBILE MENU (FLOATING) */
 .mobile-menu {
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
   display: none;
   flex-direction: column;
-  background: black;
-  text-align: center;
+  width: 200px;
+  z-index: 1000;
 }
 
 .mobile-menu a {
   padding: 15px;
   color: white;
   text-decoration: none;
-  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.mobile-menu a:hover {
+  background: #222;
 }
 
 .mobile-menu.show {
@@ -49,7 +79,7 @@ body {
 /* SECTIONS */
 section {
   display: none;
-  padding: 30px;
+  padding: 40px 20px;
   text-align: center;
 }
 
@@ -57,7 +87,7 @@ section {
   display: block;
 }
 
-/* 📱 MOBILE VIEW */
+/* 📱 MOBILE */
 @media (max-width: 768px) {
 
   .header {
@@ -67,19 +97,26 @@ section {
   }
 
   .logo {
-    height: 40px;
+    height: 80%;
   }
 
   .hamburger {
     display: block;
   }
+
+  .tab-bar {
+    display: none;
+  }
 }
 
-/* 💻 DESKTOP VIEW */
+/* 💻 DESKTOP */
 @media (min-width: 769px) {
 
   .mobile-menu {
     display: none !important;
   }
 
+  .hamburger {
+    display: none;
+  }
 }
