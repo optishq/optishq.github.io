@@ -228,3 +228,25 @@ section {
 /* PREMIUM EFFECTS */
 /* ========================= */
 
+/* Smooth scaling */
+.slide {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Default (side slides) */
+.slide {
+  transform: scale(0.85);
+  opacity: 0.5;
+}
+
+/* Active (center slide) */
+.slide.active-slide {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Slight spacing between slides */
+.slide {
+  margin: 0 10px;
+}
