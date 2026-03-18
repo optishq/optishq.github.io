@@ -43,11 +43,11 @@ body {
   font-size: 16px;
 }
 
-/* ACTIVE TAB (underline) */
+/* ✅ ACTIVE TAB (TEXT UNDERLINE ONLY) */
 .active-tab {
-  border-bottom: none;
   text-decoration: underline;
   text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }
 
 .tab-bar button:hover {
@@ -59,7 +59,7 @@ body {
   position: absolute;
   top: 70px;
   right: 10px;
-  background: #555; /* ✅ grey */
+  background: #555;
   border-radius: 10px;
   overflow: hidden;
   display: none;
@@ -112,7 +112,7 @@ section {
   }
 
   .tab-bar {
-    display: none !important; /* ✅ removed tabs */
+    display: none !important;
   }
 }
 
