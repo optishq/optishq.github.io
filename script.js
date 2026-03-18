@@ -23,20 +23,16 @@ function moveSlide(animate = true) {
 
   const slideWidth = slides.children[0].offsetWidth;
   const containerWidth = document.querySelector(".carousel").offsetWidth;
-
   const offset = (containerWidth - slideWidth) / 2;
 
-  if (!animate) {
-    slides.style.transition = "none";
-  } else {
-    slides.style.transition = "transform 0.5s ease-in-out";
-  }
+  slides.style.transition = animate
+    ? "transform 0.5s ease-in-out"
+    : "none";
 
   slides.style.transform =
     `translateX(${offset - index * slideWidth}px)`;
 
-  /* ✅ FORCE ACTIVE UPDATE AFTER RENDER */
-  setTimeout(updateActiveSlide, 50);
+  updateActiveSlide();  // ✅ immediate, not delayed
 }
 
 /* ACTIVE SLIDE (center effect) */
@@ -88,7 +84,6 @@ slides.addEventListener("transitionend", () => {
 
   if (index === total + 1) {
     index = 1;
-
     slides.style.transition = "none";
     slides.style.transform =
       `translateX(${offset - index * slideWidth}px)`;
@@ -96,12 +91,12 @@ slides.addEventListener("transitionend", () => {
 
   if (index === 0) {
     index = total;
-
     slides.style.transition = "none";
     slides.style.transform =
       `translateX(${offset - index * slideWidth}px)`;
   }
 
+  updateActiveSlide(); // ✅ reapply after jump
 });
 
 /* AUTO SLIDE */
