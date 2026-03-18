@@ -5,9 +5,10 @@ const slides = document.getElementById("slides");
 const dots = document.querySelectorAll(".dots span");
 const total = 7;
 
-/* IMPORTANT: shift to center */
+/* Move EXACTLY one slide width */
 function moveSlide() {
-  slides.style.transform = `translateX(calc(-${index * 40}% + 30%))`;
+  const slideWidth = slides.children[0].offsetWidth;
+  slides.style.transform = `translateX(-${index * slideWidth}px)`;
 }
 
 function updateDots() {
