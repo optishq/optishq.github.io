@@ -24,7 +24,6 @@ function moveSlide(animate = true) {
   const slideWidth = slides.children[0].offsetWidth;
   const containerWidth = document.querySelector(".carousel").offsetWidth;
 
-  /* CENTER CALCULATION */
   const offset = (containerWidth - slideWidth) / 2;
 
   if (!animate) {
@@ -36,7 +35,8 @@ function moveSlide(animate = true) {
   slides.style.transform =
     `translateX(${offset - index * slideWidth}px)`;
 
-  updateActiveSlide();
+  /* ✅ FORCE ACTIVE UPDATE AFTER RENDER */
+  setTimeout(updateActiveSlide, 50);
 }
 
 /* ACTIVE SLIDE (center effect) */
