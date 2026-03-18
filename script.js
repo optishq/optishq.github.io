@@ -82,14 +82,24 @@ function goToSlide(i) {
 /* LOOP FIX */
 slides.addEventListener("transitionend", () => {
 
+  const slideWidth = slides.children[0].offsetWidth;
+  const containerWidth = document.querySelector(".carousel").offsetWidth;
+  const offset = (containerWidth - slideWidth) / 2;
+
   if (index === total + 1) {
     index = 1;
-    moveSlide(false);
+
+    slides.style.transition = "none";
+    slides.style.transform =
+      `translateX(${offset - index * slideWidth}px)`;
   }
 
   if (index === 0) {
     index = total;
-    moveSlide(false);
+
+    slides.style.transition = "none";
+    slides.style.transform =
+      `translateX(${offset - index * slideWidth}px)`;
   }
 
 });
