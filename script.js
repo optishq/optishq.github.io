@@ -5,20 +5,30 @@ const slides = document.getElementById("slides");
 const dots = document.querySelectorAll(".dots span");
 const total = 7;
 
-/* PRELOAD IMAGES (fix blank flash) */
-const images = document.querySelectorAll(".slide img");
-images.forEach(img => {
+let autoSlide;
+
+/* PRELOAD IMAGES */
+document.querySelectorAll(".slide img").forEach(img => {
   const i = new Image();
   i.src = img.src;
 });
+
+/* UPDATE ACTIVE SLIDE */
+function updateActiveSlide() {
+  const allSlides = document.querySelectorAll(".slide");
+
+  allSlides.forEach(slide => slide.classList.remove("active-slide"));
+
+  if (allSlides[index]) {
+    allSlides[index].classList.add("active-slide");
+  }
+}
 
 /* MOVE */
 function moveSlide(animate = true) {
   const slideWidth = slides.children[0].offsetWidth;
 
-  if (!animate) {
-    slides.style.transition = "none";
-  }
+  if (!animate) slides.style.transition = "none";
 
   slides.style.transform = `translateX(-${index * slideWidth}px)`;
 
@@ -27,6 +37,8 @@ function moveSlide(animate = true) {
       slides.style.transition = "transform 0.5s ease-in-out";
     }, 50);
   }
+
+  updateActiveSlide();
 }
 
 /* DOTS */
@@ -42,7 +54,7 @@ function nextSlide() {
   updateDots();
 }
 
-/* DOT CLICK */
+/* CLICK DOT */
 function goToSlide(i) {
   index = i + 1;
   moveSlide();
@@ -54,7 +66,7 @@ slides.addEventListener("transitionend", () => {
 
   if (index === total + 1) {
     index = 1;
-    moveSlide(false); /* ✅ no animation jump */
+    moveSlide(false);
   }
 
   if (index === 0) {
@@ -64,14 +76,45 @@ slides.addEventListener("transitionend", () => {
 
 });
 
-/* AUTO */
-setInterval(nextSlide, 2000);
+/* AUTO SLIDE CONTROL */
+function startAuto() {
+  autoSlide = setInterval(nextSlide, 2000);
+}
 
-/* INIT (FIX initial jump) */
+function stopAuto() {
+  clearInterval(autoSlide);
+}
+
+/* TOUCH SWIPE SUPPORT (MOBILE 🔥) */
+let startX = 0;
+
+slides.addEventListener("touchstart", (e) => {
+  stopAuto();
+  startX = e.touches[0].clientX;
+});
+
+slides.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) {
+    nextSlide();
+  } else if (endX - startX > 50) {
+    index--;
+    moveSlide();
+    updateDots();
+  }
+
+  startAuto();
+});
+
+/* INIT */
 window.onload = () => {
-  moveSlide(false);  /* ✅ no animation on load */
+  moveSlide(false);
   updateDots();
+  updateActiveSlide();
+  startAuto();
 };
+
 
 /* EXISTING FUNCTIONS */
 
