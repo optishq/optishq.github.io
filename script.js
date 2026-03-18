@@ -3,11 +3,12 @@
 let index = 0;
 const slides = document.getElementById("slides");
 const dots = document.querySelectorAll(".dots span");
-const totalSlides = 7;
+const totalSlides = dots.length;
 
 function showSlide(i) {
   index = i;
-  slides.style.transform = `translateX(-${index * (100 / totalSlides)}%)`;
+
+  slides.style.transform = `translateX(-${index * 100}%)`;
 
   dots.forEach(dot => dot.classList.remove("active-dot"));
   dots[index].classList.add("active-dot");
@@ -24,7 +25,6 @@ function goToSlide(i) {
   showSlide(i);
 }
 
-// INIT
 window.onload = () => {
   showSlide(0);
 };
