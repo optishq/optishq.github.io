@@ -247,6 +247,8 @@ section {
 }
 
 /* Slight spacing between slides */
-.slide {
-  margin: 0 10px;
+.slides {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* ✅ safe spacing, no drift */
 }
