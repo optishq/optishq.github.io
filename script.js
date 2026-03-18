@@ -20,7 +20,12 @@ window.onload = () => {
 
 /* MOVE */
 function moveSlide(animate = true) {
+
   const slideWidth = slides.children[0].offsetWidth;
+  const containerWidth = document.querySelector(".carousel").offsetWidth;
+
+  /* CENTER CALCULATION */
+  const offset = (containerWidth - slideWidth) / 2;
 
   if (!animate) {
     slides.style.transition = "none";
@@ -28,7 +33,8 @@ function moveSlide(animate = true) {
     slides.style.transition = "transform 0.5s ease-in-out";
   }
 
-  slides.style.transform = `translateX(-${index * slideWidth}px)`;
+  slides.style.transform =
+    `translateX(${offset - index * slideWidth}px)`;
 
   updateActiveSlide();
 }
