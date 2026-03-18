@@ -149,7 +149,7 @@ section {
 }
 
 /* ========================= */
-/* 💻 DESKTOP (KEY FIXES) */
+/* 💻 DESKTOP (FIXED CENTER) */
 /* ========================= */
 @media (min-width: 769px) {
 
@@ -157,26 +157,26 @@ section {
     height: 60vh;
   }
 
+  .slides {
+    padding: 0 calc(50% - 30vh); /* 👈 MAGIC: centers square */
+  }
+
   .slide {
-    flex: 0 0 40%; /* 👈 smaller width so side previews show */
+    flex: 0 0 60vh; /* 👈 SAME as height */
   }
 
   .slide img {
-    height: 60vh;       /* 👈 fixed height */
-    width: 60vh;        /* 👈 SAME = square */
-    object-fit: cover;  /* 👈 fills square properly */
+    width: 60vh;
+    height: 60vh;
+    object-fit: cover; /* fills square nicely */
   }
 
 }
 
 /* ========================= */
-/* 📱 MOBILE (CLEAN RESET) */
+/* 📱 MOBILE */
 /* ========================= */
 @media (max-width: 768px) {
-
-  .slides {
-    align-items: stretch;
-  }
 
   .slide {
     flex: 0 0 100%;
@@ -188,24 +188,4 @@ section {
     object-fit: contain;
   }
 
-}
-
-/* DOTS */
-.dots {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.dots span {
-  height: 10px;
-  width: 10px;
-  margin: 5px;
-  display: inline-block;
-  background: #bbb;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.dots .active-dot {
-  background: #00bcd4;
 }
