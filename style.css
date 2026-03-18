@@ -45,7 +45,9 @@ body {
 
 /* ACTIVE TAB (underline) */
 .active-tab {
-  border-bottom: 3px solid white;
+  border-bottom: none;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
 .tab-bar button:hover {
