@@ -1,3 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optishq</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <img src="logo_cropped.jpg" class="logo" alt="Optishq Logo">
+  <div id="menuIcon" class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- DESKTOP TAB BAR -->
+<div class="tab-bar">
+  <button onclick="showSection('home', this)" class="active-tab">Home</button>
+  <button onclick="showSection('about', this)">About Us</button>
+  <button onclick="showSection('location', this)">Location</button>
+  <button onclick="showSection('appointments', this)">Appointments</button>
+  <button onclick="showSection('contact', this)">Contact Us</button>
+</div>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('about')">About Us</a>
+  <a onclick="showSection('location')">Location</a>
+  <a onclick="showSection('appointments')">Appointments</a>
+  <a onclick="showSection('contact')">Contact Us</a>
+</div>
+
+<!-- SECTIONS -->
 <section id="home" class="active">
 
   <div class="carousel">
@@ -23,3 +58,27 @@
   </div>
 
 </section>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>Professional eye checkups, eyeglasses & sunglasses.</p>
+</section>
+
+<section id="location">
+  <h2>Location</h2>
+  <p>📍 Your Store Address</p>
+</section>
+
+<section id="appointments">
+  <h2>Appointments</h2>
+  <p>Booking feature coming soon.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>📞 +91XXXXXXXXXX</p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
