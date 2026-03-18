@@ -196,22 +196,32 @@ section {
 /* DOTS */
 /* ========================= */
 .dots {
+  position: relative;
+  z-index: 10;              /* ✅ bring to front */
   text-align: center;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .dots span {
-  height: 12px;
-  width: 12px;
+  height: 14px;
+  width: 14px;
   margin: 6px;
   display: inline-block;
-  background: #bbb;
+  background: white;       /* ✅ make visible on dark bg */
   border-radius: 50%;
   cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.dots span:hover {
+  opacity: 1;
 }
 
 .dots .active-dot {
   background: #00bcd4;
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 /* ========================= */
