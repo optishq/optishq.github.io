@@ -4,7 +4,6 @@ function toggleMenu() {
 
   menu.classList.toggle("show");
 
-  // ✅ Toggle icon
   if (menu.classList.contains("show")) {
     icon.textContent = "✖";
   } else {
@@ -13,21 +12,23 @@ function toggleMenu() {
 }
 
 function showSection(id, el = null) {
-  // show section
+
+  // Show section
   document.querySelectorAll("section").forEach(sec => {
     sec.classList.remove("active");
   });
   document.getElementById(id).classList.add("active");
 
-  // ✅ highlight active tab (desktop only)
+  // ✅ Update active tab (desktop)
+  document.querySelectorAll(".tab-bar button").forEach(btn => {
+    btn.classList.remove("active-tab");
+  });
+
   if (el) {
-    document.querySelectorAll(".tab-bar button").forEach(btn => {
-      btn.classList.remove("active-tab");
-    });
     el.classList.add("active-tab");
   }
 
-  // close mobile menu
+  // Close mobile menu
   const menu = document.getElementById("mobileMenu");
   const icon = document.getElementById("menuIcon");
 
