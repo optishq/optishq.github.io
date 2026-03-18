@@ -1,71 +1,81 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f8f9fb;
-    color: #333;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-/* Header */
-header {
-    text-align: center;
-    padding: 40px 20px;
-    background: #0a2540;
-    color: white;
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0a2540;
+  color: white;
+  padding: 15px 20px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-header p {
-    margin: 10px 0 20px;
+ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
-/* Button */
-.btn {
-    display: inline-block;
-    padding: 12px 20px;
-    background: #00bcd4;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
+ul li a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* Sections */
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* SECTIONS */
 section {
-    padding: 40px 20px;
-    text-align: center;
+  display: none;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-.services {
-    background: white;
+.active {
+  display: block;
 }
 
-.card {
-    background: #f1f1f1;
-    margin: 15px 0;
-    padding: 20px;
-    border-radius: 10px;
+/* BUTTON */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #00bcd4;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
+/* MOBILE */
+@media (max-width: 768px) {
+  ul {
+    display: none;
+    flex-direction: column;
     background: #0a2540;
-    color: white;
-}
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 10px;
+  }
 
-/* Desktop view */
-@media (min-width: 768px) {
-    .services {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
+  ul.show {
+    display: flex;
+  }
 
-    .card {
-        width: 250px;
-    }
+  .menu-toggle {
+    display: block;
+  }
 }
