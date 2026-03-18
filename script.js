@@ -2,27 +2,21 @@
 
 let index = 1;
 const slides = document.getElementById("slides");
-const dots = document.querySelectorAll(".dots span");
 const total = 7;
 
+let dots;
 let autoSlide;
 
-/* PRELOAD IMAGES (fix blank flash) */
-document.querySelectorAll(".slide img").forEach(img => {
-  const i = new Image();
-  i.src = img.src;
-});
+/* WAIT FOR DOM */
+window.onload = () => {
 
-/* UPDATE ACTIVE (center effect) */
-function updateActiveSlide() {
-  const allSlides = document.querySelectorAll(".slide");
+  dots = document.querySelectorAll(".dots span");
 
-  allSlides.forEach(slide => slide.classList.remove("active-slide"));
-
-  if (allSlides[index]) {
-    allSlides[index].classList.add("active-slide");
-  }
-}
+  moveSlide(false);
+  updateDots();
+  updateActiveSlide();
+  startAuto();
+};
 
 /* MOVE */
 function moveSlide(animate = true) {
@@ -39,8 +33,21 @@ function moveSlide(animate = true) {
   updateActiveSlide();
 }
 
+/* ACTIVE SLIDE (center effect) */
+function updateActiveSlide() {
+  const allSlides = document.querySelectorAll(".slide");
+
+  allSlides.forEach(slide => slide.classList.remove("active-slide"));
+
+  if (allSlides[index]) {
+    allSlides[index].classList.add("active-slide");
+  }
+}
+
 /* DOTS */
 function updateDots() {
+  if (!dots) return;
+
   dots.forEach(dot => dot.classList.remove("active-dot"));
   dots[(index - 1 + total) % total].classList.add("active-dot");
 }
@@ -52,7 +59,7 @@ function nextSlide() {
   updateDots();
 }
 
-/* PREV (for swipe) */
+/* PREV */
 function prevSlide() {
   index--;
   moveSlide(true);
@@ -83,17 +90,15 @@ slides.addEventListener("transitionend", () => {
 
 /* AUTO SLIDE */
 function startAuto() {
-  stopAuto(); // prevent duplicates
-  autoSlide = setInterval(() => {
-    nextSlide();
-  }, 2000);
+  stopAuto();
+  autoSlide = setInterval(nextSlide, 2000);
 }
 
 function stopAuto() {
   if (autoSlide) clearInterval(autoSlide);
 }
 
-/* TOUCH SUPPORT (SAFE VERSION) */
+/* TOUCH (MOBILE) */
 let startX = 0;
 
 slides.addEventListener("touchstart", (e) => {
@@ -112,14 +117,6 @@ slides.addEventListener("touchend", (e) => {
 
   startAuto();
 });
-
-/* INIT */
-window.onload = () => {
-  moveSlide(false);
-  updateDots();
-  updateActiveSlide();
-  startAuto();  // ✅ THIS was likely broken earlier
-};
 
 
 /* EXISTING FUNCTIONS */
