@@ -88,14 +88,14 @@ section.active { display: block; }
 }
 
 .social {
-  width: 24px;
-  height: 24px;   /* ✅ force perfect square */
+  width: 32px;
+  height: 32px;   /* ✅ force perfect square */
 
   display: inline-flex;   /* ✅ better centering */
   align-items: center;
   justify-content: center;
 
-  font-size: 24px;
+  font-size: 12px;
   margin: 5px;
   color: white;
   border-radius: 50%;
@@ -105,7 +105,7 @@ section.active { display: block; }
 /* Mobile */
 @media (max-width: 768px) {
   .social i {
-    font-size: 18px;
+    font-size: 10px;
   }
 }
 
