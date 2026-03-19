@@ -97,6 +97,13 @@ section.active { display: block; }
   display: inline-block;
 }
 
+/* Mobile */
+@media (max-width: 768px) {
+  .social i {
+    font-size: 18px;
+  }
+}
+
 .ig {
   background: #E1306C;
 }
