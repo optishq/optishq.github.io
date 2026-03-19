@@ -115,3 +115,29 @@ section.active { display: block; }
 .social:hover {
   opacity: 0.8;
 }
+
+.wa-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 30px; /* pill shape */
+  text-decoration: none;
+  
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between text & icon */
+  
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.wa-float i {
+  font-size: 20px;
+}
+
+.wa-float:hover {
+  opacity: 0.9;
+}
