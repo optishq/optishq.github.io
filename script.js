@@ -1,4 +1,4 @@
-let index = 2; // Start at the first "real" image (after 2 clones)
+let index = 2; 
 const total = 7;
 let autoSlide;
 const slides = document.getElementById("slides");
@@ -14,10 +14,18 @@ function updateCarousel(animate = true) {
   const slideWidth = slideElements[0].offsetWidth;
   const containerWidth = document.querySelector(".carousel").offsetWidth;
   
-  const gap = 20; // Matches CSS gap
+  const gap = 20; 
   const offset = (containerWidth - slideWidth) / 2;
 
-  slides.style.transition = animate ? "transform 0.5s ease-in-out" : "none";
+  // If animate is false, disable transition on the container AND the images
+  if (!animate) {
+    slides.style.transition = "none";
+    slides.classList.add("no-transition");
+  } else {
+    slides.style.transition = "transform 0.5s ease-in-out";
+    slides.classList.remove("no-transition");
+  }
+
   const translateX = offset - (index * (slideWidth + gap));
   slides.style.transform = `translateX(${translateX}px)`;
 
@@ -29,18 +37,16 @@ function updateUI(slideElements) {
   if (slideElements[index]) slideElements[index].classList.add("active-slide");
 
   dots.forEach(d => d.classList.remove("active-dot"));
-  // Math to map index 2-8 back to dots 0-6
   let dotIndex = (index - 2 + total) % total;
   if (dots[dotIndex]) dots[dotIndex].classList.add("active-dot");
 }
 
 slides.addEventListener("transitionend", () => {
-  // If we reach the clones at the end, jump back to real start
+  // Jump without animation to create infinite loop effect
   if (index >= total + 2) {
     index = 2;
     updateCarousel(false);
   } 
-  // If we reach the clones at the beginning, jump to real end
   else if (index <= 1) {
     index = total + 1;
     updateCarousel(false);
@@ -60,7 +66,7 @@ function goToSlide(i) {
 
 function startAuto() {
   stopAuto();
-  autoSlide = setInterval(nextSlide, 2000); // Updated to 2 seconds
+  autoSlide = setInterval(nextSlide, 3000); // Slowed down slightly for better UX
 }
 
 function stopAuto() {
@@ -69,7 +75,6 @@ function stopAuto() {
 
 window.addEventListener('resize', () => updateCarousel(false));
 
-/* NAVIGATION & MENU */
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   const icon = document.getElementById("menuIcon");
@@ -80,11 +85,17 @@ function toggleMenu() {
 function showSection(id, el = null) {
   document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
   document.getElementById(id).classList.add("active");
+  
   if (el) {
     document.querySelectorAll(".tab-bar button").forEach(b => b.classList.remove("active-tab"));
     el.classList.add("active-tab");
   }
-  if (id === "home") setTimeout(() => updateCarousel(false), 50);
+  
+  // Reset carousel position when switching back to home
+  if (id === "home") {
+    setTimeout(() => updateCarousel(false), 50);
+  }
+  
   document.getElementById("mobileMenu").classList.remove("show");
   document.getElementById("menuIcon").textContent = "☰";
 }
