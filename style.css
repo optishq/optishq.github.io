@@ -165,7 +165,7 @@ section.active { display: block; }
 
 #location {
   width: 50%;
-  margin: 40px auto;  /* center it */
+  margin: 0 auto;  /* center it */
 }
 
 #location iframe {
