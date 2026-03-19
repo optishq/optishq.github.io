@@ -236,11 +236,13 @@ section.active { display: block; }
   padding: 4px 0;
   font-size: 13px;
   width: 100%;
+  line-height: 1;       /* Collapses extra space around the text */
 }
 
 /* MOBILE SPECIFIC FOOTER */
 @media (max-width: 768px) {
   .footer {
+    margin: 0;            /* IMPORTANT: Removes the default browser gap */
     position: fixed;      /* Remains visible while scrolling */
     bottom: 0;
     left: 0;
