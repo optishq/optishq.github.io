@@ -44,7 +44,7 @@ body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
 
 .mobile-menu { 
   position: fixed; 
-  top: 70px;               /* Starts right below the black header */
+  top: 100px;               /* Starts right below the black header */
   right: 10px;             /* Small gap from the right edge */
   background: #323232; 
   width: 200px;            /* Lesser width for the popup look */
@@ -233,8 +233,8 @@ section.active { display: block; }
   background: #000;
   color: #888;            /* Sleek gray text */
   text-align: center;
-  padding: 8px 0;
-  font-size: 12px;
+  padding: 4px 0;
+  font-size: 13px;
   width: 100%;
 }
 
