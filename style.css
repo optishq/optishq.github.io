@@ -159,7 +159,7 @@ section.active { display: block; }
 
 @media (max-width: 768px) {
   #about {
-    width: 80%;
+    width: 85%;
   }
 }
 
@@ -178,7 +178,7 @@ section.active { display: block; }
 /* Mobile */
 @media (max-width: 768px) {
   #location {
-    width: 90%;
+    width: 100%;
   }
 }
 
