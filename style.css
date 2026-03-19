@@ -162,3 +162,22 @@ section.active { display: block; }
     width: 80%;
   }
 }
+
+#location {
+  width: 60%;
+  margin: 40px auto;  /* center it */
+}
+
+#location iframe {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #location {
+    width: 90%;
+  }
+}
