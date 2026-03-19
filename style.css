@@ -95,7 +95,7 @@ section.active { display: block; }
   align-items: center;
   justify-content: center;
 
-  font-size: 12px;
+  font-size: 16px;
   margin: 5px;
   color: white;
   border-radius: 50%;
@@ -105,7 +105,7 @@ section.active { display: block; }
 /* Mobile */
 @media (max-width: 768px) {
   .social i {
-    font-size: 10px;
+    font-size: 16px;
   }
 }
 
