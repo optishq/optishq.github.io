@@ -147,3 +147,18 @@ section.active { display: block; }
 .wa-float:hover {
   opacity: 0.9;
 }
+
+#about {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#about p {
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  #about {
+    width: 80%;
+  }
+}
