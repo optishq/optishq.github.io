@@ -12,9 +12,36 @@ body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
 /* Hamburger - Hidden on Desktop */
 .hamburger { position: absolute; right: 20px; font-size: 28px; color: white; cursor: pointer; display: none; }
 
-.mobile-menu { position: fixed; top: 15vh; right: 0; background: #222; width: 100%; display: none; flex-direction: column; z-index: 1001; }
-.mobile-menu a { padding: 15px; color: white; text-align: center; border-bottom: 1px solid #333; text-decoration: none; }
-.mobile-menu.show { display: flex; }
+.mobile-menu { 
+  position: fixed; 
+  top: 15vh;               /* Starts right below the black header */
+  right: 10px;             /* Small gap from the right edge */
+  background: #222; 
+  width: 200px;            /* Lesser width for the popup look */
+  display: none; 
+  flex-direction: column; 
+  z-index: 1001; 
+  border-radius: 8px;      /* Rounded corners for the popup effect */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Shadow to make it sit 'above' the page */
+  overflow: hidden;        /* Keeps the links inside the rounded corners */
+}
+
+.mobile-menu a { 
+  padding: 15px; 
+  color: white; 
+  text-align: left;        /* Left-aligned text looks cleaner in a small menu */
+  border-bottom: 1px solid #333; 
+  text-decoration: none; 
+  font-size: 16px;
+}
+
+.mobile-menu a:last-child {
+  border-bottom: none;     /* Removes the line from the last item */
+}
+
+.mobile-menu.show { 
+  display: flex; 
+}
 
 /* CAROUSEL & SECTIONS */
 section { display: none; padding: 20px; text-align: center; }
