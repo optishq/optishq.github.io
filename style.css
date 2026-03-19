@@ -164,7 +164,7 @@ section.active { display: block; }
 }
 
 #location {
-  width: 60%;
+  width: 50%;
   margin: 40px auto;  /* center it */
 }
 
