@@ -1,27 +1,22 @@
-let index = 1;
+let index = 2; // Starts at 2 because of the two clones ([6], [7], [1...])
 const total = 7;
 let autoSlide;
 const slides = document.getElementById("slides");
 const dots = document.querySelectorAll(".dots span");
 
-/* INITIALIZE */
 window.onload = () => {
   updateCarousel(false);
   startAuto();
 };
 
-/* MAIN UPDATE FUNCTION */
 function updateCarousel(animate = true) {
   const slideElements = document.querySelectorAll(".slide");
   const slideWidth = slideElements[0].offsetWidth;
   const containerWidth = document.querySelector(".carousel").offsetWidth;
-  
-  // The magic gap is 20px from CSS
   const gap = 20; 
   const offset = (containerWidth - slideWidth) / 2;
 
   slides.style.transition = animate ? "transform 0.5s ease-in-out" : "none";
-  // Calculation accounts for the width of slides plus the gaps between them
   const translateX = offset - (index * (slideWidth + gap));
   slides.style.transform = `translateX(${translateX}px)`;
 
@@ -29,53 +24,49 @@ function updateCarousel(animate = true) {
 }
 
 function updateUI(slideElements) {
-  // Update Active Class
   slideElements.forEach(s => s.classList.remove("active-slide"));
   if (slideElements[index]) slideElements[index].classList.add("active-slide");
 
-  // Update Dots
   dots.forEach(d => d.classList.remove("active-dot"));
-  let dotIndex = (index - 1 + total) % total;
+  // Calculate which dot to highlight based on current index
+  let dotIndex = (index - 2 + total) % total; 
   if (dots[dotIndex]) dots[dotIndex].classList.add("active-dot");
 }
 
-/* INFINITE LOOP LOGIC */
+/* INFINITE LOOP RESET */
 slides.addEventListener("transitionend", () => {
-  if (index === total + 1) {
-    index = 1;
+  if (index >= total + 2) { // Hit the end clone
+    index = 2;
     updateCarousel(false);
-  } else if (index === 0) {
-    index = total;
+  } else if (index <= 1) { // Hit the start clones
+    index = total + 1;
     updateCarousel(false);
   }
 });
 
-/* NAVIGATION */
 function nextSlide() {
   index++;
   updateCarousel(true);
 }
 
 function goToSlide(i) {
-  index = i + 1;
+  index = i + 2;
   updateCarousel(true);
-  startAuto(); // Reset timer on manual click
+  startAuto(); 
 }
 
-/* AUTO PLAY */
 function startAuto() {
   stopAuto();
-  autoSlide = setInterval(nextSlide, 3000);
+  autoSlide = setInterval(nextSlide, 2000); // 2 Seconds
 }
 
 function stopAuto() {
   clearInterval(autoSlide);
 }
 
-/* RE-CENTER ON RESIZE */
 window.addEventListener('resize', () => updateCarousel(false));
 
-/* MENU & SECTION LOGIC */
+/* NAVIGATION LOGIC */
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   const icon = document.getElementById("menuIcon");
@@ -95,7 +86,7 @@ function showSection(id, el = null) {
   if (id === "home") {
     setTimeout(() => updateCarousel(false), 50);
   }
-
+  
   document.getElementById("mobileMenu").classList.remove("show");
   document.getElementById("menuIcon").textContent = "☰";
 }
