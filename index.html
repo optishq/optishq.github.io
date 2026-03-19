@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Optishq | Eye Care</title>
+  <title>Optishq</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,14 +11,15 @@
 <header class="header">
   <img src="logo_cropped.jpg" class="logo" alt="Optishq Logo">
   <div id="menuIcon" class="hamburger" onclick="toggleMenu()">☰</div>
-  <nav class="nav-links">
-    <button onclick="showSection('home', this)" class="active-tab">Home</button>
-    <button onclick="showSection('about', this)">About Us</button>
-    <button onclick="showSection('location', this)">Location</button>
-    <button onclick="showSection('appointments', this)">Appointments</button>
-    <button onclick="showSection('contact', this)">Contact Us</button>
-  </nav>
 </header>
+
+<nav class="tab-bar">
+  <button onclick="showSection('home', this)" class="active-tab">Home</button>
+  <button onclick="showSection('about', this)">About Us</button>
+  <button onclick="showSection('location', this)">Location</button>
+  <button onclick="showSection('appointments', this)">Appointments</button>
+  <button onclick="showSection('contact', this)">Contact Us</button>
+</nav>
 
 <div id="mobileMenu" class="mobile-menu">
   <a onclick="showSection('home')">Home</a>
@@ -29,41 +30,41 @@
 </div>
 
 <main>
-  <section id="home" class="active home-section">
-    <div class="carousel-container">
-      <div class="carousel" id="carouselMain">
-        <div class="slides" id="slides">
-          <div class="slide"><img src="home-img-6.jpg" alt=""></div>
-          <div class="slide"><img src="home-img-7.jpg" alt=""></div>
-          
-          <div class="slide"><img id="firstImage" src="home-img-1.jpg" alt="Slide 1"></div>
-          <div class="slide"><img src="home-img-2.jpg" alt="Slide 2"></div>
-          <div class="slide"><img src="home-img-3.jpg" alt="Slide 3"></div>
-          <div class="slide"><img src="home-img-4.jpg" alt="Slide 4"></div>
-          <div class="slide"><img src="home-img-5.jpg" alt="Slide 5"></div>
-          <div class="slide"><img src="home-img-6.jpg" alt="Slide 6"></div>
-          <div class="slide"><img src="home-img-7.jpg" alt="Slide 7"></div>
+  <section id="home" class="active">
+    <div class="carousel">
+      <div class="slides" id="slides">
+        <div class="slide"><img src="home-img-6.jpg"></div>
+        <div class="slide"><img src="home-img-7.jpg"></div>
+        
+        <div class="slide"><img src="home-img-1.jpg" id="main-start-img"></div>
+        <div class="slide"><img src="home-img-2.jpg"></div>
+        <div class="slide"><img src="home-img-3.jpg"></div>
+        <div class="slide"><img src="home-img-4.jpg"></div>
+        <div class="slide"><img src="home-img-5.jpg"></div>
+        <div class="slide"><img src="home-img-6.jpg"></div>
+        <div class="slide"><img src="home-img-7.jpg"></div>
 
-          <div class="slide"><img src="home-img-1.jpg" alt=""></div>
-          <div class="slide"><img src="home-img-2.jpg" alt=""></div>
-        </div>
+        <div class="slide"><img src="home-img-1.jpg"></div>
+        <div class="slide"><img src="home-img-2.jpg"></div>
       </div>
-      
-      <div class="dots-tray">
-        <div class="dots" id="dotsContainer">
-          <span onclick="goToSlide(0)"></span>
-          <span onclick="goToSlide(1)"></span>
-          <span onclick="goToSlide(2)"></span>
-          <span onclick="goToSlide(3)"></span>
-          <span onclick="goToSlide(4)"></span>
-          <span onclick="goToSlide(5)"></span>
-          <span onclick="goToSlide(6)"></span>
-        </div>
+
+      <div class="dots" id="dotsContainer">
+        <span onclick="goToSlide(0)"></span>
+        <span onclick="goToSlide(1)"></span>
+        <span onclick="goToSlide(2)"></span>
+        <span onclick="goToSlide(3)"></span>
+        <span onclick="goToSlide(4)"></span>
+        <span onclick="goToSlide(5)"></span>
+        <span onclick="goToSlide(6)"></span>
       </div>
     </div>
   </section>
 
-  </main>
+  <section id="about"><h2>About Us</h2></section>
+  <section id="location"><h2>Location</h2></section>
+  <section id="appointments"><h2>Appointments</h2></section>
+  <section id="contact"><h2>Contact Us</h2></section>
+</main>
 
 <script src="script.js"></script>
 </body>
