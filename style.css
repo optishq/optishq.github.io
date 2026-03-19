@@ -40,6 +40,19 @@ body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
   line-height: 1;          /* Keeps the box tight around the icon */
   
   z-index: 1002;
+  transition: all 0.2s ease;
+}
+
+/* Ensure the icon stays centered even when it changes to X */
+@media (max-width: 768px) {
+  .hamburger { 
+    display: flex; /* Use flex to center the ☰ or ✖ */
+  }
+}
+
+/* Optional: Slight color change when menu is open */
+.hamburger.active {
+  background: rgba(255, 69, 0, 0.9); /* Slightly darker orange/red */
 }
 
 .mobile-menu { 
