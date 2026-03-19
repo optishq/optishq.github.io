@@ -88,8 +88,8 @@ section.active { display: block; }
 }
 
 .social {
-  width: 48px;
-  height: 48px;   /* ✅ force perfect square */
+  width: 24px;
+  height: 24px;   /* ✅ force perfect square */
 
   display: inline-flex;   /* ✅ better centering */
   align-items: center;
