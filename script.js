@@ -82,8 +82,16 @@ window.addEventListener('resize', () => updateCarousel(false));
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   const icon = document.getElementById("menuIcon");
+  
   menu.classList.toggle("show");
-  icon.textContent = menu.classList.contains("show") ? "✖" : "☰";
+  
+  if (menu.classList.contains("show")) {
+    icon.textContent = "✖";
+    icon.classList.add("active"); // Adds the active style
+  } else {
+    icon.textContent = "☰";
+    icon.classList.remove("active");
+  }
 }
 
 function showSection(id, el = null) {
@@ -100,4 +108,12 @@ function showSection(id, el = null) {
   // Close mobile menu after selection
   document.getElementById("mobileMenu").classList.remove("show");
   document.getElementById("menuIcon").textContent = "☰";
+
+// Reset the icon and menu
+  const menu = document.getElementById("mobileMenu");
+  const icon = document.getElementById("menuIcon");
+  
+  menu.classList.remove("show");
+  icon.textContent = "☰";
+  icon.classList.remove("active");
 }
