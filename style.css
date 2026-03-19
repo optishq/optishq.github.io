@@ -1,8 +1,19 @@
 body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
 
 /* HEADER & NAV */
-.header { background: #000; height: 15vh; display: flex; justify-content: center; align-items: center; position: relative; }
-.logo { height: 70%; }
+.header { 
+  background: #000; 
+  height: auto;           /* Changed from 15vh to auto to fit banner height */
+  display: block;         /* Allows banner to dictate height */
+  position: relative; 
+  line-height: 0;         /* Removes tiny white gap under images */
+}
+
+.banner { 
+  width: 100%;            /* Takes full width */
+  height: auto;           /* Maintains proportions (1590x554) */
+  display: block;
+}
 
 /* Desktop Navigation */
 .tab-bar { display: flex; justify-content: center; background: #111; position: sticky; top: 0; z-index: 100; }
@@ -10,11 +21,22 @@ body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
 .active-tab { text-decoration: underline; text-underline-offset: 6px; color: #00bcd4 !important; }
 
 /* Hamburger - Hidden on Desktop */
-.hamburger { position: absolute; right: 20px; font-size: 28px; color: white; cursor: pointer; display: none; }
+/* Ensure hamburger stays on top of the banner */
+.hamburger { 
+  position: absolute; 
+  right: 20px; 
+  top: 50%; 
+  transform: translateY(-50%); /* Centers icon vertically against the banner */
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  display: none;
+  z-index: 1002;
+}
 
 .mobile-menu { 
   position: fixed; 
-  top: 15vh;               /* Starts right below the black header */
+  top: 10%;               /* Starts right below the black header */
   right: 10px;             /* Small gap from the right edge */
   background: #323232; 
   width: 200px;            /* Lesser width for the popup look */
@@ -195,6 +217,32 @@ section.active { display: block; }
 
   .mobile-text {
     display: inline;
+  }
+}
+
+/* FOOTER STYLING */
+.footer {
+  background: #000;
+  color: #888;            /* Sleek gray text */
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+  width: 100%;
+}
+
+/* MOBILE SPECIFIC FOOTER */
+@media (max-width: 768px) {
+  .footer {
+    position: fixed;      /* Remains visible while scrolling */
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    border-top: 1px solid #333; /* Subtle separation */
+  }
+
+  /* Add padding to the body so the footer doesn't cover content */
+  body {
+    padding-bottom: 50px; 
   }
 }
 
