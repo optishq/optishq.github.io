@@ -69,7 +69,7 @@ function goToSlide(i) {
 
 function startAuto() {
   stopAuto();
-  autoSlide = setInterval(nextSlide, 3000); 
+  autoSlide = setInterval(nextSlide, 2000); 
 }
 
 function stopAuto() {
