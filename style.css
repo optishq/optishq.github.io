@@ -88,13 +88,18 @@ section.active { display: block; }
 }
 
 .social {
+  width: 48px;
+  height: 48px;   /* ✅ force perfect square */
+
+  display: inline-flex;   /* ✅ better centering */
+  align-items: center;
+  justify-content: center;
+
   font-size: 24px;
-  padding: 12px;
   margin: 5px;
   color: white;
   border-radius: 50%;
   text-decoration: none;
-  display: inline-block;
 }
 
 /* Mobile */
