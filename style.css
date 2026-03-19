@@ -2,7 +2,7 @@ body { margin: 0; font-family: sans-serif; background: #fff; }
 
 /* HEADER & NAV */
 .header { background: #000; height: 12vh; display: flex; justify-content: center; align-items: center; position: relative; }
-.logo { height: 0%; }
+.logo { height: 70%; }
 .hamburger { position: absolute; right: 20px; font-size: 28px; color: white; cursor: pointer; display: none; }
 
 .tab-bar { display: flex; justify-content: center; background: #111; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #333; }
