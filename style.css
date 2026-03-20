@@ -108,6 +108,10 @@ main {
   background-position: center;
 }
 
+main, main * {
+  font-weight: 600; /* 600 is a nice "semi-bold" that looks professional */
+}
+
 /* Ensure active sections start at the very top of the main area */
 section.active {
   display: block;
