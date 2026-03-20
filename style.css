@@ -58,7 +58,7 @@ body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
 
 /* Optional: Slight color change when menu is open */
 .hamburger.active {
-  background: rgba(255, 69, 0, 0.9); /* Slightly darker orange/red */
+  background: rgba(255, 100, 0, 0.9); /* Slightly darker orange/red */
 }
 
 .mobile-menu { 
