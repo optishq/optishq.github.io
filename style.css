@@ -131,7 +131,7 @@ section h2 {
 }
 
 .moderate-space {
-  height: 10px; /* This is roughly half the height of a standard <br> line */
+  height: 8px; /* This is roughly half the height of a standard <br> line */
 }
 
 .carousel {
