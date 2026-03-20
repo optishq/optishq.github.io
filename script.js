@@ -117,3 +117,38 @@ function showSection(id, el = null) {
   icon.textContent = "☰";
   icon.classList.remove("active");
 }
+
+// --- SWIPE FUNCTIONALITY ---
+let touchStartX = 0;
+let touchEndX = 0;
+
+const carouselContainer = document.querySelector(".carousel");
+
+carouselContainer.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAuto(); // Stop the 2s timer while user is interacting
+}, {passive: true});
+
+carouselContainer.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+    startAuto(); // Restart the 2s timer after swipe
+}, {passive: true});
+
+function handleGesture() {
+    const threshold = 50; // Minimum distance to count as a swipe
+    if (touchEndX < touchStartX - threshold) {
+        // Swiped Left -> Go Right
+        nextSlide();
+    }
+    if (touchEndX > touchStartX + threshold) {
+        // Swiped Right -> Go Left
+        prevSlide();
+    }
+}
+
+// Need to add this because your current script only has nextSlide()
+function prevSlide() {
+    index--;
+    updateCarousel(true);
+}
