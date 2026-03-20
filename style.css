@@ -1,4 +1,10 @@
-body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+  background: #f4f4f4; }
 
 /* HEADER & NAV */
 .header { 
