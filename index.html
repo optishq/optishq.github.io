@@ -10,7 +10,10 @@
 <body>
 
 <header class="header">
-  <img src="banner.jpg" class="banner" alt="Optishq Banner">
+  <picture>
+    <source media="(max-width: 768px)" srcset="banner_mobile.jpg">
+    <img src="banner.jpg" class="banner" alt="Optishq Banner">
+  </picture>
   <div id="menuIcon" class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
 
