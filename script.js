@@ -126,22 +126,35 @@ function showSection(id, el = null) {
 // --- SWIPE FUNCTIONALITY ---
 let touchStartX = 0;
 let touchEndX = 0;
+let isDragging = false;
+const threshold = 50; // Minimum distance to count as a swipe
 
 const carouselContainer = document.querySelector(".carousel");
 
 carouselContainer.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
+    isDragging = true;
     stopAuto(); // Stop the 2s timer while user is interacting
 }, {passive: true});
 
+carouselContainer.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    touchEndX = e.touches[0].clientX;
+    if (Math.abs(touchEndX - startX) > threshold) {
+        isDragging = false;
+        handleGesture();
+        startAuto(); // Restart the 2s timer after swipe
+    }
+}); {passive: true});
+
 carouselContainer.addEventListener('touchend', e => {
     touchEndX = e.changedTouches[0].screenX;
+    isDragging = false;
     handleGesture();
     startAuto(); // Restart the 2s timer after swipe
 }, {passive: true});
 
 function handleGesture() {
-    const threshold = 50; // Minimum distance to count as a swipe
     if (touchEndX < touchStartX - threshold) {
         // Swiped Left -> Go Right
         nextSlide();
