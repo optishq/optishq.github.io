@@ -145,7 +145,7 @@ carouselContainer.addEventListener('touchmove', (e) => {
         handleGesture();
         startAuto(); // Restart the 2s timer after swipe
     }
-}); {passive: true});
+}, {passive: true});
 
 carouselContainer.addEventListener('touchend', e => {
     touchEndX = e.changedTouches[0].screenX;
