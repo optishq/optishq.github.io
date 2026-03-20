@@ -209,7 +209,7 @@ section.active { display: block; }
 
 @media (max-width: 768px) {
   #about {
-    width: 85%;
+    width: 90%;
   }
 }
 
