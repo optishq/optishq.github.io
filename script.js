@@ -61,6 +61,11 @@ function nextSlide() {
   updateCarousel(true);
 }
 
+function prevSlide() {
+    index--;
+    updateCarousel(true);
+}
+
 function goToSlide(i) {
   index = i + 2;
   updateCarousel(true);
@@ -119,6 +124,49 @@ function showSection(id, el = null) {
 }
 
 // --- SWIPE FUNCTIONALITY ---
+
+let startX = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let isDragging = false;
+
+const carousel = document.querySelector(".carousel");
+
+carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    stopAuto(); // Stop auto-sliding while dragging
+    carousel.style.transition = 'none'; // Disable transition for instant tracking
+});
+
+carousel.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    
+    // Move the carousel based on the distance moved by the finger
+    const moveBy = -index * 100 + (diff / window.innerWidth) * 100;
+    carousel.style.transform = `translateX(${moveBy}%)`;
+});
+
+carousel.addEventListener('touchend', (e) => {
+    isDragging = false;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    carousel.style.transition = 'transform 0.5s ease-out'; // Re-enable smoothness
+
+    // If swipe was more than 20% of the screen width, change slide
+    if (Math.abs(diff) > window.innerWidth * 0.2) {
+        if (diff > 0) prevSlide(); // Swiped Right -> Go Left
+        else nextSlide();          // Swiped Left -> Go Right
+    } else {
+        updateCarousel(true); // Snap back to current slide if swipe wasn't far enough
+    }
+    startAuto();
+});
+
+/*
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -145,10 +193,4 @@ function handleGesture() {
         // Swiped Right -> Go Left
         prevSlide();
     }
-}
-
-// Need to add this because your current script only has nextSlide()
-function prevSlide() {
-    index--;
-    updateCarousel(true);
-}
+} */
