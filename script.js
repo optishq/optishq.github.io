@@ -141,11 +141,18 @@ carousel.addEventListener('touchstart', (e) => {
 
 carousel.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
+    
     const currentX = e.touches[0].clientX;
     const diff = currentX - startX;
+    const containerWidth = carousel.offsetWidth;
     
-    // Move the carousel based on the distance moved by the finger
-    const moveBy = -index * 100 + (diff / window.innerWidth) * 100;
+    // Convert the pixel drag distance into a percentage of the container width
+    const dragPercent = (diff / containerWidth) * 100;
+    
+    // Calculate final position: current slide position + drag distance
+    const moveBy = (-index * 100) + dragPercent;
+    
+    // Apply the transform
     carousel.style.transform = `translateX(${moveBy}%)`;
 });
 
