@@ -93,6 +93,10 @@ body {
   display: flex; 
 }
 
+main {
+  flex: 1; /* This tells the main content to grow and fill all available space */
+}
+
 /* CAROUSEL & SECTIONS */
 section { display: none; padding: 20px; text-align: center; }
 #home { padding: 0; } /* Remove gap between header/carousel */
@@ -250,6 +254,9 @@ section.active { display: block; }
 
 /* FOOTER STYLING */
 .footer {
+  margin: 0;
+  position: relative;     /* Changed from fixed to relative */
+  bottom: 0;
   background: #000;
   color: #888;            /* Sleek gray text */
   text-align: center;
