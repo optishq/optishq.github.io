@@ -10,10 +10,17 @@ body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
 }
 
 .banner { 
+  content: url('banner.jpg');
   width: 100%;            /* Takes full width */
   height: auto;           /* Maintains proportions (1590x554) */
   display: block;
 }
+
+/* Change the banner for the mobile view */
+@media (max-width: 768px) {
+  content: url('banner_mobile.jpg');
+}
+
 
 /* Desktop Navigation */
 .tab-bar { display: flex; justify-content: center; background: #111; position: sticky; top: 0; z-index: 100; }
