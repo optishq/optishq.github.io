@@ -94,8 +94,15 @@ body {
 }
 
 main {
-  flex: 1;            /* This tells the main content to grow and fill all available space */
-  display: block;     /* Standard block flow (avoids vertical centering) */
+  flex: 1;                /* This tells the main content to grow and fill all available space */
+  display: flex;
+  flex-direction: column; /* Stack sections vertically */
+}
+
+/* Ensure active sections start at the very top of the main area */
+section.active {
+  display: block;
+  width: 100%;
 }
 
 /* CAROUSEL & SECTIONS */
