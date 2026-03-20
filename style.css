@@ -94,10 +94,8 @@ body {
 }
 
 main {
-  flex: 1; /* This tells the main content to grow and fill all available space */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Ensures content stays at the top */
+  flex: 1;            /* This tells the main content to grow and fill all available space */
+  display: block;     /* Standard block flow (avoids vertical centering) */
 }
 
 /* CAROUSEL & SECTIONS */
